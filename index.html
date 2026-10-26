@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EL PASTILLERO – Gestión inteligente de medicamentos para pacientes. Consulta sin internet, actualizaciones por correo." />
+  <title>EL PASTILLERO – Gestión de Medicamentos</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="layout.css" />
+</head>
+<body class="theme-green mode-dark">
+
+  <!-- Fondo animado -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="app-header" id="app-header">
+    <div class="header-left">
+      <div class="logo-wrap">
+        <div class="logo-icon">💊</div>
+        <div class="logo-text">
+          <span class="logo-title">EL PASTILLERO</span>
+          <span class="logo-subtitle">Gestión de Medicamentos</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- Selector de tema de color -->
+      <div class="theme-selector" id="theme-selector">
+        <span class="theme-label">Tema:</span>
+        <button class="theme-dot theme-green active" data-theme="green" title="Verde" aria-label="Tema Verde"></button>
+        <button class="theme-dot theme-blue" data-theme="blue" title="Azul" aria-label="Tema Azul"></button>
+        <button class="theme-dot theme-red" data-theme="red" title="Rojo" aria-label="Tema Rojo"></button>
+        <button class="theme-dot theme-purple" data-theme="purple" title="Morado" aria-label="Tema Morado"></button>
+        <button class="theme-dot theme-orange" data-theme="orange" title="Naranja" aria-label="Tema Naranja"></button>
+        <button class="theme-dot theme-yellow" data-theme="yellow" title="Amarillo" aria-label="Tema Amarillo"></button>
+      </div>
+      <!-- Toggle modo oscuro/claro -->
+      <button class="mode-toggle" id="mode-toggle" title="Cambiar modo" aria-label="Cambiar modo claro/oscuro">
+        <span class="mode-icon">🌙</span>
+        <span class="mode-text">Modo Oscuro</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ALERT DE PRÓXIMAS RECEPCIONES -->
+  <div class="alerts-bar" id="alerts-bar" role="alert" aria-live="polite"></div>
+
+  <!-- NAVEGACIÓN DE PESTAÑAS -->
+  <nav class="tab-nav" id="tab-nav" role="navigation" aria-label="Navegación principal">
+    <button class="tab-btn active" data-tab="pacientes" id="tab-pacientes" aria-selected="true">
+      <span class="tab-icon">👤</span><span class="tab-label">Pacientes</span>
+    </button>
+    <button class="tab-btn" data-tab="medicamentos" id="tab-medicamentos" aria-selected="false">
+      <span class="tab-icon">💊</span><span class="tab-label">Medicamentos</span>
+    </button>
+    <button class="tab-btn" data-tab="dosis" id="tab-dosis" aria-selected="false">
+      <span class="tab-icon">⏱️</span><span class="tab-label">Dosis</span>
+    </button>
+    <button class="tab-btn" data-tab="calendario" id="tab-calendario" aria-selected="false">
+      <span class="tab-icon">📅</span><span class="tab-label">Calendario</span>
+    </button>
+    <button class="tab-btn" data-tab="consulta" id="tab-consulta" aria-selected="false">
+      <span class="tab-icon">🔍</span><span class="tab-label">Consulta</span>
+    </button>
+    <button class="tab-btn" data-tab="datos" id="tab-datos" aria-selected="false">
+      <span class="tab-icon">💾</span><span class="tab-label">Datos</span>
+    </button>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content" id="main-content">
+
+    <!-- TAB: PACIENTES -->
+    <section class="tab-panel active" id="panel-pacientes" role="tabpanel" aria-labelledby="tab-pacientes">
+      <div class="panel-header">
+        <h1 class="panel-title">👤 Gestión de Pacientes</h1>
+        <button class="btn btn-primary" id="btn-nuevo-paciente">
+          <span>+</span> Nuevo Paciente
+        </button>
+      </div>
+
+      <!-- Formulario nuevo/editar paciente -->
+      <div class="card form-card" id="form-paciente-card" style="display:none;">
+        <h2 class="card-title" id="form-paciente-title">Nuevo Paciente</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="pac-nombre">Nombre completo *</label>
+            <input type="text" class="form-input" id="pac-nombre" placeholder="Ej: María García López" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pac-edad">Edad</label>
+            <input type="number" class="form-input" id="pac-edad" placeholder="Años" min="0" max="120" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pac-telefono">Teléfono</label>
+            <input type="tel" class="form-input" id="pac-telefono" placeholder="+57 300 000 0000" />
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="pac-notas">Notas del paciente</label>
+            <textarea class="form-input form-textarea" id="pac-notas" placeholder="Alergias, condiciones especiales, etc."></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="btn-cancelar-paciente">Cancelar</button>
+          <button class="btn btn-primary" id="btn-guardar-paciente">💾 Guardar Paciente</button>
+        </div>
+      </div>
+
+      <!-- Lista de pacientes -->
+      <div id="lista-pacientes" class="patients-grid"></div>
+      <div id="empty-pacientes" class="empty-state">
+        <div class="empty-icon">👥</div>
+        <p>No hay pacientes registrados.<br>Haz clic en <strong>"+ Nuevo Paciente"</strong> para comenzar.</p>
+      </div>
+    </section>
+
+    <!-- TAB: MEDICAMENTOS -->
+    <section class="tab-panel" id="panel-medicamentos" role="tabpanel" aria-labelledby="tab-medicamentos">
+      <div class="panel-header">
+        <h1 class="panel-title">💊 Medicamentos</h1>
+        <div class="header-actions">
+          <select class="form-select" id="sel-paciente-meds" aria-label="Seleccionar paciente">
+            <option value="">— Seleccionar paciente —</option>
+          </select>
+          <button class="btn btn-primary" id="btn-nuevo-med">
+            <span>+</span> Nuevo Medicamento
+          </button>
+        </div>
+      </div>
+
+      <!-- Formulario medicamento -->
+      <div class="card form-card" id="form-med-card" style="display:none;">
+        <h2 class="card-title" id="form-med-title">Nuevo Medicamento</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="med-nombre">Nombre del medicamento *</label>
+            <input type="text" class="form-input" id="med-nombre" placeholder="Ej: Metformina" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-concentracion">Concentración *</label>
+            <input type="number" class="form-input" id="med-concentracion" placeholder="Ej: 500" step="0.01" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-unidad">Unidad *</label>
+            <select class="form-select" id="med-unidad">
+              <option value="mg">mg (miligramos)</option>
+              <option value="g">g (gramos)</option>
+              <option value="mcg">mcg (microgramos)</option>
+              <option value="UI">UI (Unidades Internacionales)</option>
+              <option value="ml">ml (mililitros)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-cantidad">Cantidad (tabletas/unidades) *</label>
+            <input type="number" class="form-input" id="med-cantidad" placeholder="Ej: 30" min="0" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-laboratorio">Laboratorio fabricante</label>
+            <input type="text" class="form-input" id="med-laboratorio" placeholder="Ej: Genfar (opcional)" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-fecha-recepcion">Fecha de recepción actual</label>
+            <input type="date" class="form-input" id="med-fecha-recepcion" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="med-proxima-recepcion">Próxima fecha de recepción</label>
+            <input type="date" class="form-input" id="med-proxima-recepcion" />
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="med-notas">Notas del medicamento</label>
+            <textarea class="form-input form-textarea" id="med-notas" placeholder="Indicaciones, advertencias, etc."></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="btn-cancelar-med">Cancelar</button>
+          <button class="btn btn-primary" id="btn-guardar-med">💾 Guardar Medicamento</button>
+        </div>
+      </div>
+
+      <!-- Lista de medicamentos -->
+      <div id="lista-medicamentos" class="meds-list"></div>
+      <div id="empty-medicamentos" class="empty-state">
+        <div class="empty-icon">💊</div>
+        <p>Selecciona un paciente para ver sus medicamentos.<br>O haz clic en <strong>"+ Nuevo Medicamento"</strong>.</p>
+      </div>
+    </section>
+
+    <!-- TAB: DOSIS -->
+    <section class="tab-panel" id="panel-dosis" role="tabpanel" aria-labelledby="tab-dosis">
+      <div class="panel-header">
+        <h1 class="panel-title">⏱️ Horario de Dosis</h1>
+        <div class="header-actions">
+          <select class="form-select" id="sel-paciente-dosis" aria-label="Seleccionar paciente para dosis">
+            <option value="">— Seleccionar paciente —</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Formulario dosis -->
+      <div class="card form-card" id="form-dosis-card" style="display:none;">
+        <h2 class="card-title">Programar Dosis</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="dosis-medicamento">Medicamento *</label>
+            <select class="form-select" id="dosis-medicamento">
+              <option value="">— Seleccionar medicamento —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dosis-cantidad-dia">Dosis diaria *</label>
+            <input type="number" class="form-input" id="dosis-cantidad-dia" placeholder="Ej: 2" min="0.5" step="0.5" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Jornadas *</label>
+            <div class="jornadas-check">
+              <label class="check-label"><input type="checkbox" id="jornada-manana" value="mañana" /> 🌅 Mañana</label>
+              <label class="check-label"><input type="checkbox" id="jornada-tarde" value="tarde" /> ☀️ Tarde</label>
+              <label class="check-label"><input type="checkbox" id="jornada-noche" value="noche" /> 🌙 Noche</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dosis-hora-manana">Hora mañana</label>
+            <input type="time" class="form-input" id="dosis-hora-manana" value="07:00" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dosis-hora-tarde">Hora tarde</label>
+            <input type="time" class="form-input" id="dosis-hora-tarde" value="13:00" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dosis-hora-noche">Hora noche</label>
+            <input type="time" class="form-input" id="dosis-hora-noche" value="20:00" />
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="dosis-notas">Instrucciones especiales</label>
+            <textarea class="form-input form-textarea" id="dosis-notas" placeholder="Ej: Tomar con alimentos, 30 min antes de dormir, etc."></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="btn-cancelar-dosis">Cancelar</button>
+          <button class="btn btn-primary" id="btn-guardar-dosis">💾 Guardar Dosis</button>
+        </div>
+      </div>
+
+      <!-- Schedule view -->
+      <div id="dosis-schedule" class="dosis-schedule"></div>
+      <div id="empty-dosis" class="empty-state">
+        <div class="empty-icon">⏱️</div>
+        <p>Selecciona un paciente para ver y programar sus dosis diarias.</p>
+      </div>
+    </section>
+
+    <!-- TAB: CALENDARIO -->
+    <section class="tab-panel" id="panel-calendario" role="tabpanel" aria-labelledby="tab-calendario">
+      <div class="panel-header">
+        <h1 class="panel-title">📅 Calendario</h1>
+        <select class="form-select" id="sel-paciente-cal" aria-label="Seleccionar paciente para calendario">
+          <option value="">— Todos los pacientes —</option>
+        </select>
+      </div>
+      <div class="card calendar-card">
+        <div class="calendar-header">
+          <button class="cal-nav-btn" id="cal-prev" aria-label="Mes anterior">&#8592;</button>
+          <h2 class="cal-month-title" id="cal-title"></h2>
+          <button class="cal-nav-btn" id="cal-next" aria-label="Mes siguiente">&#8594;</button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid" role="grid">
+          <div class="cal-day-header">Dom</div>
+          <div class="cal-day-header">Lun</div>
+          <div class="cal-day-header">Mar</div>
+          <div class="cal-day-header">Mié</div>
+          <div class="cal-day-header">Jue</div>
+          <div class="cal-day-header">Vie</div>
+          <div class="cal-day-header">Sáb</div>
+        </div>
+        <div class="calendar-legend">
+          <span class="legend-item"><span class="legend-dot reception"></span> Recepción medicamento</span>
+          <span class="legend-item"><span class="legend-dot special"></span> Fecha especial</span>
+          <span class="legend-item"><span class="legend-dot today"></span> Hoy</span>
+        </div>
+      </div>
+
+      <!-- Modal fecha especial -->
+      <div class="modal-overlay" id="modal-fecha-especial" style="display:none;">
+        <div class="modal-card">
+          <h3 class="modal-title" id="modal-fecha-titulo">Marcar fecha especial</h3>
+          <p class="modal-date-label" id="modal-fecha-label"></p>
+          <div class="form-group">
+            <label class="form-label" for="fecha-especial-comentario">Comentario</label>
+            <textarea class="form-input form-textarea" id="fecha-especial-comentario" placeholder="Ej: Cita médica, control, etc."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-danger" id="btn-eliminar-fecha">🗑️ Eliminar</button>
+            <button class="btn btn-secondary" id="btn-cancelar-fecha">Cancelar</button>
+            <button class="btn btn-primary" id="btn-guardar-fecha">💾 Guardar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: CONSULTA -->
+    <section class="tab-panel" id="panel-consulta" role="tabpanel" aria-labelledby="tab-consulta">
+      <div class="panel-header">
+        <h1 class="panel-title">🔍 Consulta de Medicamentos</h1>
+        <div class="header-actions">
+          <select class="form-select" id="sel-paciente-consulta" aria-label="Filtrar por paciente">
+            <option value="">— Todos los pacientes —</option>
+          </select>
+          <select class="form-select" id="sel-med-consulta" aria-label="Filtrar por medicamento">
+            <option value="">— Todos los medicamentos —</option>
+          </select>
+          <button class="btn btn-success" id="btn-exportar-excel">
+            📊 Exportar Excel
+          </button>
+          <button class="btn btn-secondary" id="btn-imprimir">
+            🖨️ Imprimir
+          </button>
+        </div>
+      </div>
+      <div id="consulta-tabla-wrap" class="table-wrap">
+        <table class="data-table" id="consulta-tabla">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Medicamento</th>
+              <th>Concentración</th>
+              <th>Cantidad</th>
+              <th>Laboratorio</th>
+              <th>F. Recepción</th>
+              <th>Próx. Recepción</th>
+              <th>Dosis/Día</th>
+              <th>Jornadas</th>
+              <th>Notas</th>
+            </tr>
+          </thead>
+          <tbody id="consulta-tbody"></tbody>
+        </table>
+      </div>
+      <div id="empty-consulta" class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p>No hay medicamentos registrados para mostrar.</p>
+      </div>
+    </section>
+
+    <!-- TAB: DATOS (Importar/Exportar JSON) -->
+    <section class="tab-panel" id="panel-datos" role="tabpanel" aria-labelledby="tab-datos">
+      <div class="panel-header">
+        <h1 class="panel-title">💾 Gestión de Datos</h1>
+      </div>
+      <div class="datos-grid">
+        <!-- Exportar -->
+        <div class="card datos-card">
+          <div class="datos-icon">📤</div>
+          <h2 class="card-title">Exportar Datos</h2>
+          <p class="datos-desc">Genera un archivo JSON con toda la información. Puedes enviarlo por correo o guardar como respaldo.</p>
+          <button class="btn btn-primary btn-full" id="btn-exportar-json">
+            📤 Exportar JSON
+          </button>
+          <button class="btn btn-success btn-full" style="margin-top:0.75rem;" id="btn-exportar-excel-datos">
+            📊 Exportar Excel Completo
+          </button>
+        </div>
+
+        <!-- Importar -->
+        <div class="card datos-card">
+          <div class="datos-icon">📥</div>
+          <h2 class="card-title">Importar Datos</h2>
+          <p class="datos-desc">Carga un archivo JSON previamente exportado para restaurar o actualizar los datos.</p>
+          <div class="file-drop-zone" id="file-drop-zone" tabindex="0" role="button" aria-label="Zona de arrastre para archivo JSON">
+            <div class="drop-icon">📂</div>
+            <p>Arrastra un archivo <strong>.json</strong> aquí<br>o haz clic para seleccionar</p>
+            <input type="file" id="file-json-input" accept=".json" style="display:none;" aria-label="Seleccionar archivo JSON" />
+          </div>
+          <div class="import-options">
+            <label class="check-label">
+              <input type="radio" name="import-mode" id="import-merge" value="merge" checked />
+              🔄 Fusionar con datos actuales
+            </label>
+            <label class="check-label">
+              <input type="radio" name="import-mode" id="import-replace" value="replace" />
+              ♻️ Reemplazar todo
+            </label>
+          </div>
+        </div>
+
+        <!-- Información PWA -->
+        <div class="card datos-card">
+          <div class="datos-icon">📱</div>
+          <h2 class="card-title">Instalar en Móvil</h2>
+          <p class="datos-desc">Esta aplicación funciona sin internet (PWA). Instálala desde tu navegador móvil.</p>
+          <div class="pwa-steps">
+            <div class="pwa-step"><span class="step-num">1</span> Abre la app en Chrome/Safari</div>
+            <div class="pwa-step"><span class="step-num">2</span> Toca el menú del navegador</div>
+            <div class="pwa-step"><span class="step-num">3</span> Selecciona "Instalar app" o "Añadir a pantalla inicio"</div>
+            <div class="pwa-step"><span class="step-num">4</span> Importa el JSON con tus datos</div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btn-instalar-pwa" style="display:none;">
+            📱 Instalar Aplicación
+          </button>
+        </div>
+
+        <!-- Complementos -->
+        <div class="card datos-card complementos-card">
+          <div class="datos-icon">💡</div>
+          <h2 class="card-title">Complementos Posibles</h2>
+          <ul class="complementos-list">
+            <li>🔔 <strong>Notificaciones push</strong> — recordatorios automáticos de toma de medicamento</li>
+            <li>📷 <strong>Escáner de código de barras</strong> — identificar medicamentos por código</li>
+            <li>🤖 <strong>IA de interacciones</strong> — alertas de medicamentos contraindicados</li>
+            <li>📊 <strong>Historial y gráficas</strong> — seguimiento del consumo en el tiempo</li>
+            <li>👨‍⚕️ <strong>Portal del médico</strong> — acceso con credenciales para el profesional</li>
+            <li>💬 <strong>Integración WhatsApp</strong> — enviar recordatorios por mensajería</li>
+            <li>☁️ <strong>Sincronización en la nube</strong> — Google Drive o Dropbox</li>
+            <li>🏥 <strong>Base de datos de medicamentos</strong> — autocompletar desde INVIMA</li>
+            <li>💰 <strong>Control de costos</strong> — precio y gasto mensual por paciente</li>
+            <li>🌐 <strong>Multi-idioma</strong> — soporte inglés, portugués</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DETALLE DÍA CALENDARIO -->
+  <div class="modal-overlay" id="modal-dia-cal" style="display:none;">
+    <div class="modal-card">
+      <h3 class="modal-title" id="modal-dia-title"></h3>
+      <div id="modal-dia-content"></div>
+      <div class="form-actions">
+        <button class="btn btn-secondary" id="btn-cerrar-dia-cal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIONES -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- CONFIRMACIÓN MODAL -->
+  <div class="modal-overlay" id="modal-confirm" style="display:none;">
+    <div class="modal-card modal-small">
+      <h3 class="modal-title" id="modal-confirm-title">Confirmar</h3>
+      <p id="modal-confirm-msg"></p>
+      <div class="form-actions">
+        <button class="btn btn-secondary" id="modal-confirm-cancel">Cancelar</button>
+        <button class="btn btn-danger" id="modal-confirm-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts externos (offline-friendly: solo SheetJS para Excel) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

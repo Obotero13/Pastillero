@@ -1,0 +1,398 @@
+{
+  "version": "1.0",
+  "exportDate": "2026-10-25T22:55:50.293Z",
+  "appName": "El Pastillero",
+  "data": {
+    "pacientes": [
+      {
+        "id": "mvo8y7sxwue2s",
+        "nombre": "Oscar Daniel",
+        "edad": "32",
+        "telefono": "3114059495",
+        "notas": ""
+      },
+      {
+        "id": "mvo8ywm1nwf75",
+        "nombre": "Ob",
+        "edad": "63",
+        "telefono": "3104878738",
+        "notas": ""
+      }
+    ],
+    "medicamentos": [
+      {
+        "id": "mvo97byaj7ybn",
+        "pacienteId": "mvo8ywm1nwf75",
+        "nombre": "Clorfeniramina",
+        "concentracion": 4,
+        "unidad": "mg",
+        "cantidad": 20,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-17",
+        "notas": ""
+      },
+      {
+        "id": "mvo9h6oy2pz5d",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Lactulosa",
+        "concentracion": 15,
+        "unidad": "ml",
+        "cantidad": 29,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": ""
+      },
+      {
+        "id": "mvo9kknkgdj0x",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Buprenorfina (DCI)",
+        "concentracion": 20,
+        "unidad": "mg",
+        "cantidad": 3,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Uso Transdérmico"
+      },
+      {
+        "id": "mvoa06gfnfafy",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Metadona",
+        "concentracion": 10,
+        "unidad": "mg",
+        "cantidad": 183,
+        "laboratorio": "",
+        "fechaRecepcion": "",
+        "proximaRecepcion": "",
+        "notas": "Están como alternativa"
+      },
+      {
+        "id": "mvoa2niw1isp8",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Desvenlafaxina",
+        "concentracion": 100,
+        "unidad": "mg",
+        "cantidad": 16,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Pastilla cuadrada"
+      },
+      {
+        "id": "mvoa8a5iygxv8",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Cetirizina",
+        "concentracion": 10,
+        "unidad": "mg",
+        "cantidad": 12,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Masticable"
+      },
+      {
+        "id": "mvoab36vac67a",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Pregabalina",
+        "concentracion": 150,
+        "unidad": "mg",
+        "cantidad": 101,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": ""
+      },
+      {
+        "id": "mvoadamixznvz",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Omeprazol",
+        "concentracion": 20,
+        "unidad": "mg",
+        "cantidad": 9,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Para la digestión"
+      },
+      {
+        "id": "mvoafg857v15q",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Quetiapina",
+        "concentracion": 100,
+        "unidad": "mg",
+        "cantidad": 76,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2027-01-01",
+        "notas": ""
+      },
+      {
+        "id": "mvoajm38mhsvo",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Quetiapina",
+        "concentracion": 25,
+        "unidad": "mg",
+        "cantidad": 360,
+        "laboratorio": "",
+        "fechaRecepcion": "",
+        "proximaRecepcion": "",
+        "notas": ""
+      },
+      {
+        "id": "mvoalqjhcg3gu",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Pregabalina",
+        "concentracion": 75,
+        "unidad": "mg",
+        "cantidad": 37,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": ""
+      },
+      {
+        "id": "mvoaostzx5l02",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Bisacodilo",
+        "concentracion": 5,
+        "unidad": "mg",
+        "cantidad": 100,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Para dar del cuerpo"
+      },
+      {
+        "id": "mvoardrgb2z6e",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Clonidina",
+        "concentracion": 0.15,
+        "unidad": "mg",
+        "cantidad": 90,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": ""
+      },
+      {
+        "id": "mvoaud477z3ck",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Carbonato de Litio",
+        "concentracion": 300,
+        "unidad": "mg",
+        "cantidad": 88,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2026-11-25",
+        "notas": "Produce borrachera"
+      },
+      {
+        "id": "mvoaxa0bu8t9s",
+        "pacienteId": "mvo8y7sxwue2s",
+        "nombre": "Clorfeniramina",
+        "concentracion": 4,
+        "unidad": "mg",
+        "cantidad": 14,
+        "laboratorio": "",
+        "fechaRecepcion": "2026-10-25",
+        "proximaRecepcion": "2027-01-01",
+        "notas": ""
+      }
+    ],
+    "dosis": [
+      {
+        "id": "mvo97yponwqwd",
+        "pacienteId": "mvo8ywm1nwf75",
+        "medicamentoId": "mvo97byaj7ybn",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvo9iat2fmmjo",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvo9h6oy2pz5d",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          }
+        ],
+        "notas": "Solución en un poco de agua"
+      },
+      {
+        "id": "mvob2jj5lfjvg",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoa2niw1isp8",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob4y64owaxv",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoa8a5iygxv8",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": "Masticable"
+      },
+      {
+        "id": "mvob5j0acce7k",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoab36vac67a",
+        "cantidadDia": 2,
+        "jornadas": [
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob5xhxuzien",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoadamixznvz",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob6sbcgedm3",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoafg857v15q",
+        "cantidadDia": 3,
+        "jornadas": [
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob7cac1etdu",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoalqjhcg3gu",
+        "cantidadDia": 2,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          },
+          {
+            "jornada": "tarde",
+            "hora": "13:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob7znjoqb79",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoaostzx5l02",
+        "cantidadDia": 2,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          },
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob8mj4qaf5s",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoardrgb2z6e",
+        "cantidadDia": 3,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          },
+          {
+            "jornada": "tarde",
+            "hora": "13:00"
+          },
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob95jjoiu8i",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoaud477z3ck",
+        "cantidadDia": 0.25,
+        "jornadas": [
+          {
+            "jornada": "tarde",
+            "hora": "13:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvob9pzrtihzn",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvoaxa0bu8t9s",
+        "cantidadDia": 1,
+        "jornadas": [
+          {
+            "jornada": "noche",
+            "hora": "20:00"
+          }
+        ],
+        "notas": ""
+      },
+      {
+        "id": "mvobbcx5fwfks",
+        "pacienteId": "mvo8y7sxwue2s",
+        "medicamentoId": "mvo9kknkgdj0x",
+        "cantidadDia": 0.25,
+        "jornadas": [
+          {
+            "jornada": "mañana",
+            "hora": "07:00"
+          }
+        ],
+        "notas": "Parche cada 4 días"
+      }
+    ],
+    "fechasEspeciales": [
+      {
+        "fecha": "2026-10-26",
+        "comentario": "Hoy es lunes"
+      }
+    ]
+  }
+}

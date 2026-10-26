@@ -1,0 +1,18 @@
+/* ============================================================
+   Estilos adicionales para modo claro: corrige nav heights
+   ============================================================ */
+/* Se calculan con JS y se inyectan inline, pero aquí fijamos
+   el offset del contenido principal */
+.main-content {
+  /* Se actualiza dinámicamente desde JS */
+  padding-top: calc(var(--header-height) + var(--nav-height) + 0.5rem);
+}
+
+/* Cuando hay alerts activos, agrega espacio extra */
+body.has-alerts .main-content {
+  padding-top: calc(var(--header-height) + var(--nav-height) + 36px + 0.5rem);
+}
+
+.tab-nav {
+  top: var(--header-height);
+}
